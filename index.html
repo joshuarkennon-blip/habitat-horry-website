@@ -28,6 +28,9 @@
               yellow: '#F6C600',
               gold:   '#C9A200',
               cream:  '#FFFBEA',
+              teal:   '#00A8CC',
+              tealdk: '#007A99',
+              tealsm: '#E0F6FB',
             }
           },
           fontFamily: {
@@ -160,8 +163,8 @@
     /* ── GALLERY STRIP ───────────────────────────────────────────────── */
     .gallery-strip { display: flex; gap: 0.75rem; overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; }
     .gallery-strip::-webkit-scrollbar { display: none; }
-    .gallery-strip img { height: 220px; width: auto; min-width: 280px; object-fit: cover; border-radius: 1rem; flex-shrink: 0; transition: transform 0.3s ease, filter 0.3s ease; filter: brightness(0.9); }
-    .gallery-strip img:hover { transform: scale(1.03); filter: brightness(1); }
+    .gallery-strip img { height: 240px; width: auto; min-width: 300px; object-fit: cover; border-radius: 1.25rem; flex-shrink: 0; transition: transform 0.35s ease, filter 0.35s ease; filter: brightness(0.88); }
+    .gallery-strip img:hover { transform: scale(1.04); filter: brightness(1); }
 
     /* ── TESTIMONIAL PHOTO ───────────────────────────────────────────── */
     .story-photo-wrap { position: relative; border-radius: 1.5rem; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.15); }
@@ -171,6 +174,32 @@
       position: absolute; bottom: 0; left: 0; right: 0; height: 50%;
       background: linear-gradient(to top, rgba(0,40,90,0.5) 0%, transparent 100%);
     }
+
+    /* ── WOMEN BUILD SECTION ─────────────────────────────────────────── */
+    #womenbuild {
+      background: linear-gradient(135deg, #00285A 0%, #003F87 45%, #007A99 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    #womenbuild::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .wb-photo-frame { border-radius: 1.5rem; overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,0.4); }
+    .wb-photo-frame img { width: 100%; height: 400px; object-fit: cover; display: block; }
+
+    /* ── TEAL ACCENTS ────────────────────────────────────────────────── */
+    .program-card.card-teal { border-top-color: #00A8CC; }
+    .program-card.card-teal:hover { box-shadow: 0 16px 48px rgba(0,168,204,0.18); }
+    .btn-teal {
+      background: #00A8CC; color: #fff;
+      font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.9rem;
+      padding: 0.85rem 2rem; border-radius: 4px; letter-spacing: 0.04em;
+      text-transform: uppercase; transition: background 0.2s, transform 0.15s;
+      display: inline-block; text-decoration: none; cursor: pointer; border: none;
+    }
+    .btn-teal:hover { background: #007A99; transform: translateY(-2px); }
   </style>
 </head>
 
@@ -201,10 +230,10 @@
         <!-- Desktop Nav Links -->
         <div class="hidden lg:flex items-center gap-1">
           <a href="#programs" class="nav-link font-heading font-semibold text-sm text-white hover:text-yellow-300 px-3 py-2 rounded transition-colors uppercase tracking-wide">Programs</a>
-          <a href="#help" class="nav-link font-heading font-semibold text-sm text-white hover:text-yellow-300 px-3 py-2 rounded transition-colors uppercase tracking-wide">How to Help</a>
+          <a href="#womenbuild" class="nav-link font-heading font-semibold text-sm text-white hover:text-yellow-300 px-3 py-2 rounded transition-colors uppercase tracking-wide">Women Build</a>
+          <a href="#help" class="nav-link font-heading font-semibold text-sm text-white hover:text-yellow-300 px-3 py-2 rounded transition-colors uppercase tracking-wide">Volunteer</a>
           <a href="#events" class="nav-link font-heading font-semibold text-sm text-white hover:text-yellow-300 px-3 py-2 rounded transition-colors uppercase tracking-wide">Events</a>
           <a href="#restore" class="nav-link font-heading font-semibold text-sm text-white hover:text-yellow-300 px-3 py-2 rounded transition-colors uppercase tracking-wide">ReStore</a>
-          <a href="#about" class="nav-link font-heading font-semibold text-sm text-white hover:text-yellow-300 px-3 py-2 rounded transition-colors uppercase tracking-wide">About</a>
           <a href="#contact" class="nav-link font-heading font-semibold text-sm text-white hover:text-yellow-300 px-3 py-2 rounded transition-colors uppercase tracking-wide">Contact</a>
           <a href="#donate" class="btn-yellow ml-4 !py-2.5 !px-5">Donate</a>
         </div>
@@ -223,12 +252,13 @@
       <!-- Mobile Menu -->
       <div id="mobile-menu" class="lg:hidden bg-hfh-dark rounded-xl mb-2 px-4">
         <div class="flex flex-col py-4 gap-1">
-          <a href="#programs"  class="font-heading font-semibold text-sm text-white hover:text-yellow-300 py-2 uppercase tracking-wide transition-colors">Programs</a>
-          <a href="#help"      class="font-heading font-semibold text-sm text-white hover:text-yellow-300 py-2 uppercase tracking-wide transition-colors">How to Help</a>
-          <a href="#events"    class="font-heading font-semibold text-sm text-white hover:text-yellow-300 py-2 uppercase tracking-wide transition-colors">Events</a>
-          <a href="#restore"   class="font-heading font-semibold text-sm text-white hover:text-yellow-300 py-2 uppercase tracking-wide transition-colors">ReStore</a>
-          <a href="#about"     class="font-heading font-semibold text-sm text-white hover:text-yellow-300 py-2 uppercase tracking-wide transition-colors">About</a>
-          <a href="#contact"   class="font-heading font-semibold text-sm text-white hover:text-yellow-300 py-2 uppercase tracking-wide transition-colors">Contact</a>
+          <a href="#programs"    class="font-heading font-semibold text-sm text-white hover:text-yellow-300 py-2 uppercase tracking-wide transition-colors">Programs</a>
+          <a href="#womenbuild"  class="font-heading font-semibold text-sm text-white hover:text-yellow-300 py-2 uppercase tracking-wide transition-colors">Women Build</a>
+          <a href="#help"        class="font-heading font-semibold text-sm text-white hover:text-yellow-300 py-2 uppercase tracking-wide transition-colors">Volunteer</a>
+          <a href="#events"      class="font-heading font-semibold text-sm text-white hover:text-yellow-300 py-2 uppercase tracking-wide transition-colors">Events</a>
+          <a href="#restore"     class="font-heading font-semibold text-sm text-white hover:text-yellow-300 py-2 uppercase tracking-wide transition-colors">ReStore</a>
+          <a href="#about"       class="font-heading font-semibold text-sm text-white hover:text-yellow-300 py-2 uppercase tracking-wide transition-colors">About</a>
+          <a href="#contact"     class="font-heading font-semibold text-sm text-white hover:text-yellow-300 py-2 uppercase tracking-wide transition-colors">Contact</a>
           <a href="#donate"    class="btn-yellow text-center mt-3">Donate Now</a>
         </div>
       </div>
@@ -375,41 +405,46 @@
   <!-- ╔══════════════════════════════════════════════════════════════╗ -->
   <!-- ║  PHOTO GALLERY STRIP                                         ║ -->
   <!-- ╚══════════════════════════════════════════════════════════════╝ -->
-  <section class="py-10 bg-white overflow-hidden">
-    <div class="px-6 mb-4 reveal">
-      <p class="font-heading font-bold text-hfh-blue text-xs uppercase tracking-widest">In Action — Horry County</p>
+  <section class="py-12 bg-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 mb-5 flex items-end justify-between reveal">
+      <div>
+        <p class="font-heading font-bold text-xs uppercase tracking-widest mb-1" style="color:#00A8CC">In Action — Horry County</p>
+        <h3 class="font-heading font-black text-gray-900 text-2xl">Building Together</h3>
+      </div>
+      <a href="https://www.instagram.com/habitathorry/" target="_blank" rel="noopener" class="hidden sm:flex items-center gap-2 font-heading font-semibold text-sm text-gray-500 hover:text-gray-800 transition-colors">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" fill="none" stroke="currentColor" stroke-width="2"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="currentColor" stroke-width="2"/></svg>
+        @habitathorry
+      </a>
     </div>
-    <div class="gallery-strip px-6">
-      <img
-        src="https://picsum.photos/seed/hfh-framing/560/220"
-        alt="House under construction — exposed wood framing"
-        loading="lazy"
-      />
-      <img
-        src="https://picsum.photos/seed/hfh-volunteers/400/220"
-        alt="Diverse group of volunteers stacking hands together"
-        loading="lazy"
-      />
-      <img
-        src="https://picsum.photos/seed/hfh-room/500/220"
-        alt="Room under construction with wooden framing"
-        loading="lazy"
-      />
-      <img
-        src="https://picsum.photos/seed/hfh-walkteam/480/220"
-        alt="Volunteers walking together after community service"
-        loading="lazy"
-      />
-      <img
-        src="https://picsum.photos/seed/hfh-wheelbarrow/420/220"
-        alt="Worker pushing wheelbarrow at construction site"
-        loading="lazy"
-      />
-      <img
-        src="https://picsum.photos/seed/hfh-hammer/400/220"
-        alt="Construction worker with hammer"
-        loading="lazy"
-      />
+    <div class="gallery-strip pl-6 pr-2">
+      <div class="relative flex-shrink-0">
+        <img src="https://picsum.photos/seed/hfh-framing2/600/240" alt="House framing underway — volunteers and staff working together" loading="lazy" style="height:240px;min-width:320px;border-radius:1.25rem;object-fit:cover;" />
+        <span class="gallery-label">Home Construction</span>
+      </div>
+      <div class="relative flex-shrink-0">
+        <img src="https://picsum.photos/seed/hfh-wb-team/480/240" alt="Women Build volunteers on site" loading="lazy" style="height:240px;min-width:300px;border-radius:1.25rem;object-fit:cover;" />
+        <span class="gallery-label">Women Build</span>
+      </div>
+      <div class="relative flex-shrink-0">
+        <img src="https://picsum.photos/seed/hfh-restore2/520/240" alt="ReStore showroom with furniture and home goods" loading="lazy" style="height:240px;min-width:300px;border-radius:1.25rem;object-fit:cover;" />
+        <span class="gallery-label">ReStore</span>
+      </div>
+      <div class="relative flex-shrink-0">
+        <img src="https://picsum.photos/seed/hfh-keys2/480/240" alt="Homeowner receiving keys to their new Habitat home" loading="lazy" style="height:240px;min-width:300px;border-radius:1.25rem;object-fit:cover;" />
+        <span class="gallery-label">Key Ceremony</span>
+      </div>
+      <div class="relative flex-shrink-0">
+        <img src="https://picsum.photos/seed/hfh-repair/440/240" alt="Critical home repair — team working on a roof" loading="lazy" style="height:240px;min-width:280px;border-radius:1.25rem;object-fit:cover;" />
+        <span class="gallery-label">Critical Repair</span>
+      </div>
+      <div class="relative flex-shrink-0">
+        <img src="https://picsum.photos/seed/hfh-community2/480/240" alt="Community volunteers gathering before a build" loading="lazy" style="height:240px;min-width:300px;border-radius:1.25rem;object-fit:cover;" />
+        <span class="gallery-label">Community</span>
+      </div>
+      <div class="relative flex-shrink-0">
+        <img src="https://picsum.photos/seed/hfh-derbyhat/400/240" alt="Derby Day gala event — hats and fundraising" loading="lazy" style="height:240px;min-width:280px;border-radius:1.25rem;object-fit:cover;" />
+        <span class="gallery-label">Derby Day</span>
+      </div>
     </div>
   </section>
 
@@ -425,7 +460,7 @@
         <p class="text-gray-500 text-lg max-w-2xl mx-auto">From helping families achieve homeownership to emergency repairs that keep people safely housed — we're building a stronger Horry County together.</p>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-8">
+      <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
 
         <!-- Card 1: Homeownership -->
         <div class="program-card bg-white rounded-2xl overflow-hidden shadow-sm reveal">
@@ -445,7 +480,7 @@
           </div>
           <div class="p-8">
             <h3 class="font-heading font-bold text-xl text-hfh-blue mb-3">Homeownership Program</h3>
-            <p class="text-gray-600 leading-relaxed mb-6">We partner with qualifying families to build affordable homes. Homebuyers invest sweat equity, complete financial education, and purchase their home with an affordable mortgage — building wealth and stability for generations.</p>
+            <p class="text-gray-600 leading-relaxed mb-6">An 18–24 month program where families complete monthly financial classes, 300+ hours of sweat equity, and purchase their Habitat home with an interest-free mortgage.</p>
             <ul class="space-y-2 mb-8">
               <li class="flex items-start gap-2 text-sm text-gray-600">
                 <svg class="w-4 h-4 text-hfh-yellow mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
@@ -453,15 +488,15 @@
               </li>
               <li class="flex items-start gap-2 text-sm text-gray-600">
                 <svg class="w-4 h-4 text-hfh-yellow mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                Financial literacy training
+                Monthly financial literacy classes
               </li>
               <li class="flex items-start gap-2 text-sm text-gray-600">
                 <svg class="w-4 h-4 text-hfh-yellow mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                Sweat equity partnership
+                300+ hours sweat equity per adult
               </li>
               <li class="flex items-start gap-2 text-sm text-gray-600">
                 <svg class="w-4 h-4 text-hfh-yellow mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                Affordable zero-interest loans
+                Zero-percent interest mortgage
               </li>
             </ul>
             <a href="#contact" class="btn-blue w-full text-center block">Apply Today</a>
@@ -549,6 +584,133 @@
             <a href="#restore" class="btn-blue w-full text-center block" style="background:#059669;">Visit ReStore</a>
           </div>
         </div>
+
+        <!-- Card 4: Women Build -->
+        <div class="program-card card-teal bg-white rounded-2xl overflow-hidden shadow-sm reveal" style="animation-delay:0.45s">
+          <div class="h-52 relative overflow-hidden">
+            <img
+              src="https://picsum.photos/seed/hfh-womenbuild2/700/500"
+              alt="Women Build volunteers working side by side on a Habitat home"
+              class="photo-card-img w-full h-full object-cover"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-hfh-tealdk/80 via-hfh-tealdk/20 to-transparent"></div>
+            <div class="absolute bottom-4 left-4 z-10">
+              <svg class="w-10 h-10 text-white drop-shadow-lg" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/>
+              </svg>
+            </div>
+            <div class="absolute top-3 right-3 z-10">
+              <span class="bg-hfh-teal text-white text-xs font-heading font-bold px-3 py-1 rounded-full uppercase tracking-wide">Annual</span>
+            </div>
+          </div>
+          <div class="p-8">
+            <h3 class="font-heading font-bold text-xl mb-1" style="color:#00A8CC">Women Build</h3>
+            <p class="text-gray-600 leading-relaxed mb-6">Women from all walks of life unite on the build site — learning construction skills, raising funds, and working side by side to help a local woman and her family achieve the dream of homeownership.</p>
+            <ul class="space-y-2 mb-8">
+              <li class="flex items-start gap-2 text-sm text-gray-600">
+                <svg class="w-4 h-4 mt-0.5 shrink-0" style="color:#00A8CC" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                Hands-on construction training
+              </li>
+              <li class="flex items-start gap-2 text-sm text-gray-600">
+                <svg class="w-4 h-4 mt-0.5 shrink-0" style="color:#00A8CC" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                Community fundraising
+              </li>
+              <li class="flex items-start gap-2 text-sm text-gray-600">
+                <svg class="w-4 h-4 mt-0.5 shrink-0" style="color:#00A8CC" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                Open to all skill levels
+              </li>
+              <li class="flex items-start gap-2 text-sm text-gray-600">
+                <svg class="w-4 h-4 mt-0.5 shrink-0" style="color:#00A8CC" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                One family empowered per build
+              </li>
+            </ul>
+            <a href="#womenbuild" class="btn-teal w-full text-center block">Join Women Build</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ╔══════════════════════════════════════════════════════════════╗ -->
+  <!-- ║  WOMEN BUILD SPOTLIGHT                                       ║ -->
+  <!-- ╚══════════════════════════════════════════════════════════════╝ -->
+  <section id="womenbuild" class="py-24">
+    <div class="relative max-w-7xl mx-auto px-6">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+        <!-- Photo side -->
+        <div class="reveal order-2 lg:order-1">
+          <div class="relative">
+            <div class="wb-photo-frame">
+              <img
+                src="https://picsum.photos/seed/hfh-women-hard-hats/800/600"
+                alt="Women Build volunteers in hard hats working on a Habitat home"
+                loading="lazy"
+              />
+            </div>
+            <!-- Floating stats -->
+            <div class="absolute -bottom-6 -right-6 bg-yellow-400 rounded-2xl p-5 shadow-xl text-center">
+              <div class="font-heading font-black text-hfh-dark text-3xl">1991</div>
+              <div class="font-heading font-semibold text-hfh-dark/70 text-xs uppercase tracking-wide mt-0.5">Nationally Since</div>
+            </div>
+            <div class="absolute -top-5 -left-5 bg-white rounded-2xl px-5 py-3 shadow-xl">
+              <div class="flex items-center gap-2">
+                <div class="w-3 h-3 rounded-full bg-hfh-teal animate-pulse"></div>
+                <span class="font-heading font-bold text-gray-800 text-sm">2025 Build Underway</span>
+              </div>
+              <div class="text-gray-500 text-xs mt-0.5">Beneficiary: Rachel P. &amp; family</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Content side -->
+        <div class="reveal order-1 lg:order-2" style="animation-delay:0.15s">
+          <div class="inline-flex items-center gap-2 bg-white/15 border border-white/25 rounded-full px-4 py-1.5 mb-6">
+            <span class="w-2 h-2 rounded-full bg-yellow-400"></span>
+            <span class="font-heading font-semibold text-white/90 text-xs tracking-widest uppercase">Annual Program</span>
+          </div>
+          <h2 class="font-heading font-black text-white text-5xl sm:text-6xl leading-none mb-6">
+            Women<br/><span class="text-yellow-400">Build.</span>
+          </h2>
+          <p class="text-white/80 text-lg leading-relaxed mb-8">
+            Women from all walks of life — first-time volunteers and seasoned builders alike — come together on the build site to learn construction skills, raise critical funds, and empower a local woman and her family with the gift of an affordable Habitat home.
+          </p>
+
+          <!-- Stats row -->
+          <div class="grid grid-cols-3 gap-4 mb-10">
+            <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-5 text-center border border-white/15">
+              <div class="font-heading font-black text-yellow-400 text-2xl">100%</div>
+              <div class="text-white/60 text-xs mt-1 uppercase tracking-wide">Women-Led</div>
+            </div>
+            <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-5 text-center border border-white/15">
+              <div class="font-heading font-black text-white text-2xl">1</div>
+              <div class="text-white/60 text-xs mt-1 uppercase tracking-wide">Family/Year</div>
+            </div>
+            <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-5 text-center border border-white/15">
+              <div class="font-heading font-black text-yellow-400 text-2xl">0%</div>
+              <div class="text-white/60 text-xs mt-1 uppercase tracking-wide">Experience Needed</div>
+            </div>
+          </div>
+
+          <!-- CRG match callout -->
+          <div class="bg-white/10 border border-white/20 rounded-2xl p-5 mb-8 flex items-start gap-4">
+            <div class="w-10 h-10 bg-yellow-400 rounded-xl flex items-center justify-center shrink-0 mt-0.5">
+              <svg class="w-5 h-5 text-hfh-dark" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 2a2 2 0 00-2 2v14l3.5-2 3.5 2 3.5-2 3.5 2V4a2 2 0 00-2-2H5zm2.5 3a1.5 1.5 0 100 3 1.5 1.5 0 000-3zm6.207.293a1 1 0 00-1.414 0l-6 6a1 1 0 101.414 1.414l6-6a1 1 0 000-1.414zM12.5 10a1.5 1.5 0 100 3 1.5 1.5 0 000-3z" clip-rule="evenodd"/></svg>
+            </div>
+            <div>
+              <div class="font-heading font-bold text-white text-sm">2025 Matching Gift Challenge</div>
+              <div class="text-white/70 text-sm mt-0.5">CRG Homes has stepped forward with a <strong class="text-yellow-400">$20,000 matching gift</strong> to help fund this year's Women Build home for Rachel P. and her three children.</div>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-4">
+            <a href="#contact" class="btn-yellow">Join the Build</a>
+            <a href="#contact" class="btn-outline-white">Fundraise With Us</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -603,8 +765,8 @@
                 <div class="text-gray-500 text-xs mt-1 uppercase tracking-wide">Interest on<br/>Home Loans</div>
               </div>
               <div class="bg-hfh-blue rounded-2xl p-6 text-center">
-                <div class="font-heading font-black text-3xl text-yellow-400">500+</div>
-                <div class="text-white/80 text-xs mt-1 uppercase tracking-wide">Sweat Equity<br/>Hours</div>
+                <div class="font-heading font-black text-3xl text-yellow-400">300+</div>
+                <div class="text-white/80 text-xs mt-1 uppercase tracking-wide">Sweat Equity<br/>Hours Required</div>
               </div>
               <div class="bg-yellow-400 rounded-2xl p-6 text-center">
                 <div class="font-heading font-black text-3xl text-hfh-dark">30%</div>
@@ -618,15 +780,15 @@
 
             <div class="mt-6 bg-white rounded-2xl p-6 shadow-sm">
               <div class="flex items-center justify-between mb-3">
-                <span class="font-heading font-bold text-sm text-gray-700">2025 Home Build Goal</span>
+                <span class="font-heading font-bold text-sm text-gray-700">2026 Home Build Goal</span>
                 <span class="font-heading font-bold text-hfh-blue">12 Homes</span>
               </div>
               <div class="w-full bg-gray-100 rounded-full h-3 mb-2">
-                <div class="progress-fill bg-gradient-to-r from-hfh-blue to-hfh-mid h-3 rounded-full" style="width:0%" data-width="66%"></div>
+                <div class="progress-fill bg-gradient-to-r from-hfh-blue to-hfh-mid h-3 rounded-full" style="width:0%" data-width="33%"></div>
               </div>
               <div class="flex justify-between text-xs text-gray-500">
-                <span>8 homes completed</span>
-                <span>66% of goal</span>
+                <span>4 homes completed so far</span>
+                <span>33% of goal</span>
               </div>
             </div>
           </div>
@@ -741,20 +903,22 @@
         <!-- Derby Day -->
         <div class="event-card bg-white rounded-2xl overflow-hidden shadow-sm reveal">
           <div class="h-40 relative overflow-hidden">
-            <img src="https://picsum.photos/seed/hfh-gala/500/160"
-                 alt="Elegant ballroom for Derby Day gala fundraiser"
+            <img src="https://picsum.photos/seed/hfh-derby-gala/500/160"
+                 alt="Derby Day — Kentucky Derby-themed gala at Pine Lakes Country Club"
                  class="event-card-img w-full h-full object-cover" loading="lazy" />
-            <div class="absolute inset-0 bg-gradient-to-t from-purple-900/65 via-transparent to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-hfh-tealdk/75 via-transparent to-transparent"></div>
+            <div class="absolute top-3 left-3 bg-hfh-teal text-white text-xs font-heading font-bold px-2.5 py-1 rounded-full uppercase tracking-wide">May 2, 2026</div>
           </div>
           <div class="p-6">
-            <div class="inline-flex items-center gap-1.5 bg-purple-50 text-purple-700 rounded-full px-3 py-1 text-xs font-semibold mb-4">
+            <div class="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold mb-4" style="background:#E0F6FB;color:#007A99">
               <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/></svg>
-              Spring 2025
+              Signature Fundraiser
             </div>
-            <h3 class="font-heading font-bold text-gray-900 text-lg mb-2">Derby Day</h3>
-            <p class="text-gray-600 text-sm leading-relaxed mb-5">Our signature Kentucky Derby-themed gala — an evening of fun, fashion, and fundraising. Hats encouraged!</p>
-            <a href="#contact" class="font-heading font-semibold text-hfh-blue text-sm hover:text-hfh-mid flex items-center gap-1 group">
-              Learn More
+            <h3 class="font-heading font-bold text-gray-900 text-lg mb-2">Derby Day 2026</h3>
+            <p class="text-gray-600 text-sm leading-relaxed mb-1">Pine Lakes Country Club, Myrtle Beach</p>
+            <p class="text-gray-500 text-sm leading-relaxed mb-5">Our signature Kentucky Derby-themed gala — an evening of fashion, fun, and fundraising. Derby hats strongly encouraged!</p>
+            <a href="#contact" class="font-heading font-semibold text-sm hover:underline flex items-center gap-1 group" style="color:#00A8CC">
+              Get Tickets
               <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </a>
           </div>
@@ -763,19 +927,20 @@
         <!-- Women Build -->
         <div class="event-card bg-white rounded-2xl overflow-hidden shadow-sm reveal" style="animation-delay:0.1s">
           <div class="h-40 relative overflow-hidden">
-            <img src="https://picsum.photos/seed/hfh-teamwork/500/160"
-                 alt="Diverse group of women volunteers working together"
+            <img src="https://picsum.photos/seed/hfh-womenbuild3/500/160"
+                 alt="Women Build volunteers working together on a Habitat home"
                  class="event-card-img w-full h-full object-cover" loading="lazy" />
-            <div class="absolute inset-0 bg-gradient-to-t from-pink-900/65 via-transparent to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-hfh-tealdk/75 via-transparent to-transparent"></div>
+            <div class="absolute top-3 left-3 bg-hfh-teal text-white text-xs font-heading font-bold px-2.5 py-1 rounded-full uppercase tracking-wide">Annual</div>
           </div>
           <div class="p-6">
-            <div class="inline-flex items-center gap-1.5 bg-pink-50 text-pink-700 rounded-full px-3 py-1 text-xs font-semibold mb-4">
+            <div class="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold mb-4" style="background:#E0F6FB;color:#007A99">
               <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/></svg>
-              Annual
+              Women-Led Build
             </div>
-            <h3 class="font-heading font-bold text-gray-900 text-lg mb-2">Women Build</h3>
-            <p class="text-gray-600 text-sm leading-relaxed mb-5">Women from across Horry County unite on the build site to empower one another and a deserving family.</p>
-            <a href="#contact" class="font-heading font-semibold text-hfh-blue text-sm hover:text-hfh-mid flex items-center gap-1 group">
+            <h3 class="font-heading font-bold text-gray-900 text-lg mb-2">Women Build 2025</h3>
+            <p class="text-gray-600 text-sm leading-relaxed mb-5">Women across Horry County unite on the build site — learning skills and empowering Rachel P. and her three children.</p>
+            <a href="#womenbuild" class="font-heading font-semibold text-sm hover:underline flex items-center gap-1 group" style="color:#00A8CC">
               Learn More
               <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </a>
@@ -1200,7 +1365,7 @@
               <a href="https://www.facebook.com/HabitatHorry" class="w-10 h-10 bg-hfh-blue hover:bg-hfh-dark rounded-xl flex items-center justify-center transition-colors" aria-label="Facebook">
                 <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
               </a>
-              <a href="#" class="w-10 h-10 bg-gradient-to-br from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 rounded-xl flex items-center justify-center transition-colors" aria-label="Instagram">
+              <a href="https://www.instagram.com/habitathorry/" class="w-10 h-10 bg-gradient-to-br from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 rounded-xl flex items-center justify-center transition-colors" aria-label="Instagram" target="_blank" rel="noopener">
                 <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
               </a>
               <a href="#" class="w-10 h-10 bg-black hover:bg-gray-800 rounded-xl flex items-center justify-center transition-colors" aria-label="X / Twitter">
@@ -1286,14 +1451,14 @@
         <div>
           <h5 class="font-heading font-bold text-white text-sm uppercase tracking-widest mb-5">Quick Links</h5>
           <ul class="space-y-3">
-            <li><a href="#programs"  class="text-white/60 hover:text-yellow-400 text-sm transition-colors">Homeownership Program</a></li>
-            <li><a href="#programs"  class="text-white/60 hover:text-yellow-400 text-sm transition-colors">Critical Home Repair</a></li>
-            <li><a href="#restore"   class="text-white/60 hover:text-yellow-400 text-sm transition-colors">ReStore Locations</a></li>
-            <li><a href="#events"    class="text-white/60 hover:text-yellow-400 text-sm transition-colors">Events</a></li>
-            <li><a href="#help"      class="text-white/60 hover:text-yellow-400 text-sm transition-colors">Volunteer</a></li>
-            <li><a href="#donate"    class="text-white/60 hover:text-yellow-400 text-sm transition-colors">Donate</a></li>
-            <li><a href="#about"     class="text-white/60 hover:text-yellow-400 text-sm transition-colors">About Us</a></li>
-            <li><a href="#contact"   class="text-white/60 hover:text-yellow-400 text-sm transition-colors">Contact</a></li>
+            <li><a href="#programs"   class="text-white/60 hover:text-yellow-400 text-sm transition-colors">Homeownership Program</a></li>
+            <li><a href="#programs"   class="text-white/60 hover:text-yellow-400 text-sm transition-colors">Critical Home Repair</a></li>
+            <li><a href="#womenbuild" class="text-white/60 hover:text-yellow-400 text-sm transition-colors">Women Build</a></li>
+            <li><a href="#restore"    class="text-white/60 hover:text-yellow-400 text-sm transition-colors">ReStore Locations</a></li>
+            <li><a href="#events"     class="text-white/60 hover:text-yellow-400 text-sm transition-colors">Events &amp; Derby Day</a></li>
+            <li><a href="#help"       class="text-white/60 hover:text-yellow-400 text-sm transition-colors">Volunteer</a></li>
+            <li><a href="#donate"     class="text-white/60 hover:text-yellow-400 text-sm transition-colors">Donate</a></li>
+            <li><a href="#contact"    class="text-white/60 hover:text-yellow-400 text-sm transition-colors">Contact</a></li>
           </ul>
         </div>
 
